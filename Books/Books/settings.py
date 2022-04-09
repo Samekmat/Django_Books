@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'BooksApp',
     'isbn_field',
+    'django_filters',
+    'bootstrapform',
 ]
 
 MIDDLEWARE = [

@@ -1,10 +1,47 @@
-<ul>
-    {% for object in object_list %}
-    <li>{{ object.title }}</li>
-    <li>{{ object.description }}</li>
- 
-    <hr/>
-    {% empty %}
-    <li>No objects yet.</li>
-    {% endfor %}
-</ul>
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block title %}Book list{% endblock title %}
+
+{% block content %}
+<div class='container'>
+
+    <form method="get">
+        {{ filter.form|bootstrap }}
+        <button class="btn btn-info mt-3 mb-3" type="submit">Filter search
+        </button>
+    </form>
+
+
+    <table class="table table-info table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>id</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>ISBN</th>
+                <th><abbr title="Publish date">Date</abbr></th>
+                <th><abbr title="Publish language">Language</abbr></th>
+                <th><abbr title="Number of pages">Number</abbr></th>
+                <th>Book cover</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in filter.qs %}
+            <tr>
+                <th>{{ book.id }}</th>
+                <td><a href="/book/{{ book.id }}">{{ book.title }}</a></td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.ISBN }}</td>
+                <td>{{ book.publish_date }}</td>
+                <td>{{ book.publish_lang }}</td>
+                <td>{{ book.num_of_pages }}</td>
+                <td><a href="{{ book.cover_link }}">Link</a></td>
+            </tr>
+            {% empty %}
+            <li>No objects yet.</li>
+            {% endfor %}
+        </tbody>
+      </table>
+</div>
+{% endblock content %}
