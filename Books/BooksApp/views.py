@@ -1,4 +1,3 @@
-from re import template
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
@@ -8,6 +7,10 @@ from .forms import BookForm
 from .filters import BookFilter
 
 from .models import Book
+
+
+def index(request):
+    return render(request, 'index.html')
 
 
 class BookListView(ListView):
@@ -60,4 +63,3 @@ class BookUpdateView(UpdateView):
 
     def get_success_url(self):
         return reverse('book-list')
-        

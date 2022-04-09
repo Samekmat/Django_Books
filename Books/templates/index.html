@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% include navbar %}
+
+{% block content %}
+<div class="container position-absolute top-50 start-50 translate-middle">
+    <div class="list-group border border-5 border-info">
+        <a href={% url 'book-list' %} class="list-group-item list-group-item-action link-dark bg-warning">Endpoint with a list of all books</a>
+        <a href={% url 'book-create' %} class="list-group-item list-group-item-action link-dark bg-warning">Endpoint with form to add new books</a>
+    </div>
+</div>
+{% endblock content %}
