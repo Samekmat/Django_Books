@@ -1,7 +1,7 @@
 from re import template
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
-from django.views.generic import CreateView, DeleteView, DetailView, ListView
+from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
 
 from .forms import BookForm
 
@@ -45,3 +45,19 @@ class BookDeleteView(DeleteView):
 
     def get_success_url(self):
         return reverse('book-list')
+
+
+class BookUpdateView(UpdateView):
+    template_name = 'book_form.html'
+    form_class = BookForm
+
+    def get_object(self):
+        id_ = self.kwargs.get("pk")
+        return get_object_or_404(Book, id=id_)
+
+    def form_valid(self, form):
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('book-list')
+        
