@@ -39,7 +39,11 @@
                 <td><a href="{{ book.cover_link }}">Link</a></td>
             </tr>
             {% empty %}
-            <li>No objects yet.</li>
+            <tfoot class="table-danger">
+               <tr>
+                   <td>No objects</tf>
+                </tr>
+            </tfoot>
             {% endfor %}
         </tbody>
       </table>
