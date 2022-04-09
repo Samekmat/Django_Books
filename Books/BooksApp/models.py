@@ -10,3 +10,9 @@ class Book(models.Model):
     page_num = models.IntegerField()
     cover_link = models.URLField()
     publish_lang = models.CharField(max_length=64)
+
+    class Meta:
+        ordering = ['-publish_date']
+
+    def __str__(self):
+        return self.title
