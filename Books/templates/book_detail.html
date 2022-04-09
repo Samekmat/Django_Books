@@ -12,8 +12,8 @@
             Number of pages:<li class="list-group-item mt-3 mb-3 text-info">{{ object.page_num }}</li>
             Link to a book cover:<li class="list-group-item mt-3 mb-3 text-info">Book cover image: <a href="{{ object.cover_link }}">Link</a></li>
         </ul>
-        {% comment %} <a class="btn btn-info" href="{% url 'update-book' object.pk %}">Edit</a>
-        <a class="btn btn-danger" href="{% url 'delete-book' object.pk %}">Delete</a> {% endcomment %}
+        {% comment %} <a class="btn btn-info" href="{% url 'update-book' object.pk %}">Edit</a> {% endcomment %}
+        <a class="btn btn-danger" href="{% url 'book-delete' object.pk %}">Delete</a>
     </div>
 
 {% endblock %}
