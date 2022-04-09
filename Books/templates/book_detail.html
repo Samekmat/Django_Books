@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <ul>
+            <li>{{ object.title }}: Info</li>
+            <li>{{ object.author }}</li>
+            <li>{{ object.publish_date }}</li>
+            <li>{{ object.publish_lang }}</li>
+            <li>{{ object.isbn }}</li>
+            <li>{{ object.page_num }}</li>
+            <li>Book cover image: <a href="{{ object.cover_link }}">Link</a></li>
+        </ul>
+        {% comment %} <a class="btn btn-info" href="{% url 'update-book' object.pk %}">Edit</a>
+        <a class="btn btn-danger" href="{% url 'delete-book' object.pk %}">Delete</a> {% endcomment %}
+    </div>
+
+{% endblock %}

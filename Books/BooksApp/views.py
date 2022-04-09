@@ -1,7 +1,7 @@
 from re import template
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, DetailView, ListView
 
 from .forms import BookForm
 
@@ -25,4 +25,13 @@ class BookCreateView(CreateView):
     template_name = 'book_form.html'
 
     def get_success_url(self):
-        return reverse('book-list')
+        return reverse('book-page')
+
+
+class BookDetailView(DetailView):
+    template_name = 'book_detail.html'
+
+    def get_object(self):
+        id_ = self.kwargs.get("pk")
+        return get_object_or_404(Book, id=id_)
+

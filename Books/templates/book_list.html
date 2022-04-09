@@ -30,7 +30,7 @@
             {% for book in filter.qs %}
             <tr>
                 <th>{{ book.id }}</th>
-                <td><a href="/book/{{ book.id }}">{{ book.title }}</a></td>
+                <td><a href="/books/{{ book.id }}">{{ book.title }}</a></td>
                 <td>{{ book.author }}</td>
                 <td>{{ book.isbn }}</td>
                 <td>{{ book.publish_date }}</td>
