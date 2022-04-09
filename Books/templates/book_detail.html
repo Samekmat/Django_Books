@@ -3,14 +3,14 @@
 {% block content %}
 
     <div class="container">
-        <ul>
-            <li>{{ object.title }}: Info</li>
-            <li>{{ object.author }}</li>
-            <li>{{ object.publish_date }}</li>
-            <li>{{ object.publish_lang }}</li>
-            <li>{{ object.isbn }}</li>
-            <li>{{ object.page_num }}</li>
-            <li>Book cover image: <a href="{{ object.cover_link }}">Link</a></li>
+        <ul class="list-group">
+            Book:<li class="list-group-item mt-3 mb-3 text-info">{{ object.title }}: Info</li>
+            Author:<li class="list-group-item mt-3 mb-3 text-info">{{ object.author }}</li>
+            Publish date:<li class="list-group-item mt-3 mb-3 text-info">{{ object.publish_date }}</li>
+            Publish language:<li class="list-group-item mt-3 mb-3 text-info">{{ object.publish_lang }}</li>
+            ISBN number:<li class="list-group-item mt-3 mb-3 text-info">{{ object.isbn }}</li>
+            Number of pages:<li class="list-group-item mt-3 mb-3 text-info">{{ object.page_num }}</li>
+            Link to a book cover:<li class="list-group-item mt-3 mb-3 text-info">Book cover image: <a href="{{ object.cover_link }}">Link</a></li>
         </ul>
         {% comment %} <a class="btn btn-info" href="{% url 'update-book' object.pk %}">Edit</a>
         <a class="btn btn-danger" href="{% url 'delete-book' object.pk %}">Delete</a> {% endcomment %}
