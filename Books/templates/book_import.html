@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="container-fluid">
+        <h2 class="lead">Import book(s)</h2>
+
+        <form method="GET">
+            <input class="form-control mb-3 mt-3" name="queryS" type="text" placeholder="By query"/>
+            <input class="form-control mb-3 mt-3" name="titleS" type="text" placeholder="By title"/>
+            <input class="form-control mb-3 mt-3" name="authorS" type="text" placeholder="By author"/>
+            <input class="form-control mb-3 mt-3" name="publisherS" type="text" placeholder="By publisher"/>
+            <input class="form-control mb-3 mt-3" name="subjectS" type="text" placeholder="By subject"/>
+            <input class="form-control mb-3 mt-3" name="isbnS" type="text" placeholder="By isbn"/>
+            <input class="form-control mb-3 mt-3" name="lccnS" type="text" placeholder="By lccn"/>
+            <input class="form-control mb-3 mt-3" name="oclcS" type="text" placeholder="By oclc"/>
+            <button type="submit" class="btn btn-success mb-3 mt-3">Import</button>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}
