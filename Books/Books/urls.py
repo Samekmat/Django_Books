@@ -1,6 +1,5 @@
 from django.contrib import admin
 from django.urls import path
-from BooksApp.models import Book
 
 from BooksApp.views import BookCreateView, BookDeleteView, BookDetailView, BookListView, BookUpdateView, index
 
