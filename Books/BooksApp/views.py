@@ -72,6 +72,7 @@ def books_import(request):
     if 'queryS' in request.GET:
         query = request.GET['queryS']
         url += query
+
         if 'titleS' in request.GET:
             title_s = request.GET['titleS']
             if title_s != '':
@@ -111,33 +112,19 @@ def books_import(request):
 
         for book in books_info:
             try:
+                title = book['volumeInfo']['title']
+                author = book['volumeInfo']['authors']
+                date = book['volumeInfo']['publishedDate']
+                identifiers = book['volumeInfo']['industryIdentifiers']
+                page_num = book['volumeInfo']['pageCount']
+                cover_link = book['volumeInfo']['imageLinks']['thumbnail']               
+                publish_lang = book['volumeInfo']['language']
 
-                if book['volumeInfo']['title']:
-                    title = book['volumeInfo']['title']
-
-                if book['volumeInfo']['authors']:
-                    author = book['volumeInfo']['authors']
-
-                if book['volumeInfo']['publishedDate']:
-                    date = book['volumeInfo']['publishedDate']
-
-                if book['volumeInfo']['industryIdentifiers']:
-                    identifiers = book['volumeInfo']['industryIdentifiers']
-
-                    for num in identifiers:
-                        if num['type'] == 'ISBN_10' or num['type'] == 'ISBN_13':
-                            isbn = num['identifier']
-                        else:
-                            isbn = None
-
-                if book['volumeInfo']['pageCount']:
-                    page_num = book['volumeInfo']['pageCount']
-
-                if book['volumeInfo']['imageLinks']['thumbnail']:
-                    cover_link = book['volumeInfo']['imageLinks']['thumbnail']
-
-                if book['volumeInfo']['language']:
-                    publish_lang = book['volumeInfo']['language']
+                for num in identifiers:
+                    if num['type'] == 'ISBN_10' or num['type'] == 'ISBN_13':
+                        isbn = num['identifier']
+                    else:
+                        isbn = None
 
                 book_data = Book(
                     title=title,
