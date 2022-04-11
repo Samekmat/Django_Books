@@ -67,8 +67,8 @@ class BookUpdateView(UpdateView):
 
 def books_import(request):
     bulk_list = []
-    books_found = {}
     url = f'https://www.googleapis.com/books/v1/volumes?q='
+
     if 'queryS' in request.GET:
         query = request.GET['queryS']
         url += query
@@ -111,13 +111,6 @@ def books_import(request):
 
         for book in books_info:
             try:
-                title = ''
-                author = ''
-                date = ''
-                isbn = ''
-                page_num= ''
-                cover_link = ''
-                publish_lang = ''
 
                 if book['volumeInfo']['title']:
                     title = book['volumeInfo']['title']
@@ -155,9 +148,13 @@ def books_import(request):
                     cover_link=cover_link,
                     publish_lang=publish_lang
                 )
+
                 bulk_list.append(book_data)
-                books_found = Book.objects.all().order_by('-id')
+
             except Exception as e:
                 print(e)
+
         Book.objects.bulk_create(bulk_list)
-    return render(request, 'book_import.html', {'books_found': books_found})
+
+    return render(request, 'book_import.html',
+        {'books_found': Book.objects.all().order_by('-id')})

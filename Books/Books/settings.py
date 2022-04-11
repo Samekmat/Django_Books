@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'BooksApp',
-    'isbn_field',
     'django_filters',
     'bootstrapform',
 ]
