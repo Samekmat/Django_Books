@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('BooksApp', '0002_alter_book_options_alter_book_cover_link_and_more'),
+        ("BooksApp", "0002_alter_book_options_alter_book_cover_link_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='book',
-            name='publish_date',
+            model_name="book",
+            name="publish_date",
             field=models.CharField(max_length=40, null=True),
         ),
     ]

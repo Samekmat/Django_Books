@@ -11,7 +11,7 @@ class Book(models.Model):
     publish_lang = models.CharField(max_length=64)
 
     class Meta:
-        ordering = ['-publish_date']
+        ordering = ["-publish_date"]
 
     def __str__(self):
         return self.title

@@ -6,27 +6,27 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('BooksApp', '0001_initial'),
+        ("BooksApp", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='book',
-            options={'ordering': ['-publish_date']},
+            name="book",
+            options={"ordering": ["-publish_date"]},
         ),
         migrations.AlterField(
-            model_name='book',
-            name='cover_link',
+            model_name="book",
+            name="cover_link",
             field=models.URLField(blank=True),
         ),
         migrations.AlterField(
-            model_name='book',
-            name='page_num',
+            model_name="book",
+            name="page_num",
             field=models.IntegerField(null=True),
         ),
         migrations.AlterField(
-            model_name='book',
-            name='publish_date',
+            model_name="book",
+            name="publish_date",
             field=models.DateField(null=True),
         ),
     ]
