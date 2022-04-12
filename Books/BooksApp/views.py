@@ -146,5 +146,4 @@ def books_import(request):
 
         Book.objects.bulk_create(bulk_list)
 
-    return render(request, 'book_import.html',
-        {'books_found': Book.objects.all().order_by('-id')})
+    return render(request, 'book_import.html')

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 
 from BooksApp.views import BookCreateView, BookDeleteView, BookDetailView, BookListView, BookUpdateView,\
  books_import, index
@@ -13,4 +13,5 @@ urlpatterns = [
     path('books/update/<int:pk>/', BookUpdateView.as_view(), name="book-update"),
     path('', index, name="index"),
     path('books/import/', books_import, name="book-import"),
+    path('api/', include('BooksApp.api.urls')),
 ]

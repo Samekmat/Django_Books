@@ -1,4 +1,4 @@
-from django_filters import CharFilter, ChoiceFilter, DateFilter, FilterSet
+from django_filters import CharFilter, DateFilter, FilterSet
 from .models import Book
 from django.forms import DateInput
 
