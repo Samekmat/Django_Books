@@ -28,7 +28,7 @@ class BookListView(ListView):
         context = super().get_context_data(**kwargs)
         context["filter"] = BookFilter(self.request.GET, queryset=self.get_queryset())
         return context
-    
+
     def get_queryset(self):
         queryset = super().get_queryset()
         return BookFilter(self.request.GET, queryset=queryset).qs
@@ -78,7 +78,7 @@ class BookUpdateView(UpdateView):
 
 def books_import(request):
     bulk_list = []
-    url = f"https://www.googleapis.com/books/v1/volumes?q="
+    url = "https://www.googleapis.com/books/v1/volumes?q="
 
     if "queryS" in request.GET:
         query = request.GET["queryS"]
@@ -136,7 +136,7 @@ def books_import(request):
                         isbn = num["identifier"]
                     else:
                         isbn = None
-                    if "X" in isbn:
+                    if "X" in str(isbn):
                         isbn.replace("X", "10")
                         int(isbn)
 
