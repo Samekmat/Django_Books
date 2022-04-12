@@ -13,7 +13,7 @@
     </form>
 
 
-    <table class="table table-info table-striped">
+    <table class="table table-info table-striped table-sm">
         <thead class="table-dark">
             <tr>
                 <th>id</th>
@@ -27,13 +27,13 @@
             </tr>
         </thead>
         <tbody>
-            {% for book in filter.qs %}
+            {% for book in object_list %}
             <tr>
                 <th>{{ book.id }}</th>
                 <td><a href="/books/{{ book.id }}">{{ book.title }}</a></td>
                 <td>{{ book.author }}</td>
-                <td>{{ book.isbn }}</td>
                 <td>{{ book.publish_date }}</td>
+                <td>{{ book.isbn }}</td>
                 <td>{{ book.publish_lang }}</td>
                 <td>{{ book.page_num }}</td>
                 <td><a href="{{ book.cover_link }}">Link</a></td>
@@ -47,5 +47,39 @@
             {% endfor %}
         </tbody>
       </table>
+
+      {% if is_paginated %}
+        <nav aria-label="...">
+            <ul class="pagination">
+
+            {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled"><span class="page-link">Previous</span></li>
+            {% endif %}
+
+            {% for page in paginator.page_range  %}
+                {% if page_obj.number == page %}
+                    <li class="page-item active" aria-current="page">
+                    <span class="page-link">{{ page }}</span>
+                    </li>
+
+                {% else %}
+                    <li class="page-item"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
+                {% endif %}
+          {% endfor %}
+          {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+            </li>
+          {% else %}
+            <li class="page-item disabled"><span class="page-link">Next</span></li>
+          {% endif %}
+          
+        </ul>
+      </nav>
+      {% endif %}
 </div>
 {% endblock content %}
