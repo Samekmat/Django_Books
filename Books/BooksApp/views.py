@@ -125,6 +125,9 @@ def books_import(request):
                         isbn = num['identifier']
                     else:
                         isbn = None
+                    if 'X' in isbn:
+                        isbn.replace('X', '10')
+                        int(isbn)
 
                 book_data = Book(
                     title=title,
