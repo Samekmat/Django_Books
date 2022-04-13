@@ -78,7 +78,7 @@ class BookUpdateView(UpdateView):
 
 def books_import(request):
     bulk_list = []
-    url = "https://www.googleapis.com/books/v1/volumes?q="
+    url = f"https://www.googleapis.com/books/v1/volumes?q="
 
     if "queryS" in request.GET:
         query = request.GET["queryS"]
