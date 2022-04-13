@@ -75,6 +75,12 @@ class TestViews(TestCase):
         self.assertEquals(response.status_code, 200)
         self.assertTemplateNotUsed(response)
 
+    def test_book_detail_not_existing(self):
+        response = self.client.get(reverse('book-page', args=[1076876]))
+
+        self.assertEquals(response.status_code, 404)
+        self.assertTemplateUsed(response, '404.html')
+
 ### POST ###
 
     def test_book_create_POST(self):
